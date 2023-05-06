@@ -1,8 +1,91 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import ReactDOM from 'react-dom';
 
-//CSS
-import './index.css'
+import './index.css';
+
+//setup variables
+const img1 = "https://images-na.ssl-images-amazon.com/images/I/71zwHcw-D7L._AC_UL600_SR600,400_.jpg";
+const title1 = "I Will Teach You to Be Rich: No Guilt.";
+const author1 = " Ramit Sethi ";
+
+//Book1 class - creates book objects
+class Book1{
+  constructor (img, title, author) {
+    this.img = img1;
+    this.title = title1;
+    this.author = author1;
+  };
+};
+
+const book = new Book1(img1, title1, author1);
+
+
+/*firstBook object
+const firstBook = {
+  img : "https://images-na.ssl-images-amazon.com/images/I/71zwHcw-D7L._AC_UL600_SR600,400_.jpg",
+  title : "I Will Teach You to Be Rich: No Guilt.",
+  author : " Ramit Sethi"
+}
+*/
+
+const secondBook = {
+  img : "https://images-na.ssl-images-amazon.com/images/I/919mmNCTaaL._AC_UL600_SR600,400_.jpg",
+  title : "The Intelligent Investor",
+  author : " Benjamin Graham"
+}
+
+
+
+
+//a booklist component
+function Booklist() {
+  return (
+  <section className="booklist">
+    <Book
+      //using object and property value
+      img = {book.img}
+      title = {book.title}
+      author = {book.author}
+
+      //CHILDREN PROPS GO IN BETWEEN THE TAGS(AVOID SELF CLOSING TAGS)
+    >
+      <p>Lorem, ...this is a child... ipsum dolor sit amet consectetur adipisicing elit. Quisquam, nihil pariatur! Culpa at facilis inventore. Expedita cupiditate libero odio laboriosam!</p>
+    </Book>
+    <Book
+      //using prop name assigned prop value as an object's property value)
+      img = {secondBook.img}
+      title = {secondBook.title}
+      author = {secondBook.author}
+    />
+  </section>
+  );
+};
+
+//a book component
+const Book = (props) => {
+  //object destructuring(REMEMBER TO READ ABOUT THIS)
+  const { img, title, author, children} = props;
+
+  return (
+  <article className="book"> 
+    <img src={img} alt=""/>
+    <h2>{title}</h2>
+    <h4>{author}</h4>
+    {children}
+
+  </article>
+  );
+}
+
+const root = document.getElementById("root");
+ReactDOM.render(<Booklist/>, root);
+
+
+
+
+//https://images-na.ssl-images-amazon.com/images/I/919mmNCTaaL._AC_UL600_SR600,400_.jpg
+//https://images-na.ssl-images-amazon.com/images/I/71zwHcw-D7L._AC_UL600_SR600,400_.jpg
+
 
 // stateless functional component
 // always return JSX
@@ -16,41 +99,6 @@ import './index.css'
 // const Greeting = () => {
 //   return React.createElement('h2', {}, 'a react component');
 // }
-
-const Booklist = () => {
-return (
-  <section className="booklist">
-    <Book/>
-  </section>
-    
-);
-};
-
-
-const Book = () => {
-return (
-    <article className="book">
-      < img 
-        src="https://images-na.ssl-images-amazon.com/images/I/71zwHcw-D7L._AC_UL600_SR600,400_.jpg" 
-        alt=""
-        width="300"
-        height="300"
-      />
-      <h2>I will teach you to be rich</h2>
-      <h4>Ramit Sethi</h4>
-    </article>
-);
-};
-
-
-
-const root = document.getElementById('root');
-
-ReactDom.render(<Booklist/>, root);
-
-
-
-
 
 /*
 
