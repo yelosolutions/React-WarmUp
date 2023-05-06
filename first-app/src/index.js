@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 
+//CSS
+import './index.css'
+
 // stateless functional component
 // always return JSX
 
@@ -16,8 +19,7 @@ import ReactDom from 'react-dom';
 
 const Booklist = () => {
 return (
-  <section>
-    <Book/>
+  <section className="booklist">
     <Book/>
   </section>
     
@@ -27,30 +29,27 @@ return (
 
 const Book = () => {
 return (
-    <article>
-        <Image></Image>
-        <Title/>
-        <Author/>
+    <article className="book">
+      < img 
+        src="https://images-na.ssl-images-amazon.com/images/I/71zwHcw-D7L._AC_UL600_SR600,400_.jpg" 
+        alt=""
+        width="300"
+        height="300"
+      />
+      <h2>I will teach you to be rich</h2>
+      <h4>Ramit Sethi</h4>
     </article>
 );
 };
 
-const Image = () => (
-    < img 
-      src="https://images-na.ssl-images-amazon.com/images/I/71zwHcw-D7L._AC_UL600_SR600,400_.jpg" 
-      alt=""
-      width="300"
-      height="300"
-    />
-);
 
-const Title = () => {
-    return <h2>I will teach you to be rich</h2>;
-};
 
-const Author = () => {
-    return <p>Ramit Sethi</p>
-}
+const root = document.getElementById('root');
+
+ReactDom.render(<Booklist/>, root);
+
+
+
 
 
 /*
@@ -105,6 +104,4 @@ function Greeting () {
 // }
 */
 
-const root = document.getElementById('root');
 
-ReactDom.render(<Booklist/>, root);

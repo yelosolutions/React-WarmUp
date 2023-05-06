@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+
+:root {
+    --color-primary: #339999;
+    --color-danger: #ff7782;
+    --color-success: #41f1b6;
+    --color-warning: #ffc400;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-info-light: #c0b6e5;
+    --color-dark: #494536;
+    --color-light: #b2dfdb;
+    --color-primary-variant: #006666;
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-raduis-3: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --padding: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: none;
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+
+.primary {
+    color: var(--color-primary);
+}
+
+.primary-variant {
+    color: var(--color-primary-variant);
+}
+
+.success {
+    color: var(--color-success);
+}
+
+.danger {
+    color: var(--color-danger);
+}
+
+.warning {
+    color: var(--color-warning);
+}
+
+.muted_text {
+    color: var(--color-info-dark);
+}
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+h4 {
+    font-size: 0.8rem;
+}
+
+h5 {
+    font-size: 0.77rem;
+}
+
+b {
+    color: var(--color-dark);
+    font-weight: 600;
+}
+
+p {
+    color: var(--color-dark);
+    font-weight: 300;
+}
+
+.small {
+    font-size: 0.75rem;
+}
+
+html {
+    font-size: 14px;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    background: var(--color-background);
+    user-select: none;
+    overflow-x: hidden;
+}
+
+.container {
+    display: grid;
+    width: 96%;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: 16rem auto 24rem;
+}
+
+.booklist{
+    width: 90vw;
+    max-width: 1170px;
+    display: grid;
+    gap: 2rem;
+    margin: 5rem auto;
+}
+
+
+@media screen and (min-width:768px){
+    .booklist{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.book {
+    background: #fff;
+    border-radius: var(--border-raduis-3);
+    padding: 1rem;
+}
+
+.book h2{
+    margin-top: 0.5rem;
+}
+.book h4 {
+    color: #617d98;
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+}
