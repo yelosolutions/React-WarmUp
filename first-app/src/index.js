@@ -3,45 +3,64 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 
-//setup variables
+/*setup variables
 const img1 = "https://images-na.ssl-images-amazon.com/images/I/71zwHcw-D7L._AC_UL600_SR600,400_.jpg";
 const title1 = "I Will Teach You to Be Rich: No Guilt.";
 const author1 = " Ramit Sethi ";
 
-//Book1 class - creates book objects
+//setup variables
+const img2 = "https://images-na.ssl-images-amazon.com/images/I/81a5KHEkwQL._AC_UL600_SR600,400_.jpg";
+const title2 = "Oh, the Places You'll Go! ";
+const author2 = " Dr. Seuss";
+*/
+
+/*Book1 class - creates book objects
 class Book1{
   constructor (img, title, author) {
-    this.img = img1;
-    this.title = title1;
-    this.author = author1;
+    this.img = img;
+    this.title = title;
+    this.author = author;
   };
 };
 
 const book = new Book1(img1, title1, author1);
 
+const book1 = new Book1(img2, title2, author2);
+*/
 
-/*firstBook object
-const firstBook = {
+// object
+const books = [
+  {
   img : "https://images-na.ssl-images-amazon.com/images/I/71zwHcw-D7L._AC_UL600_SR600,400_.jpg",
   title : "I Will Teach You to Be Rich: No Guilt.",
   author : " Ramit Sethi"
-}
-*/
-
-const secondBook = {
+  },
+  {
   img : "https://images-na.ssl-images-amazon.com/images/I/919mmNCTaaL._AC_UL600_SR600,400_.jpg",
   title : "The Intelligent Investor",
   author : " Benjamin Graham"
-}
+  }
+];
 
-
-
+/*
+const names = ['john', 'peter', 'Jane'];
+const newNames = names.map((name) => {
+  //console.log(name);
+  return <h1>{name}</h1>;
+});
+console.log(newNames);
+*/
 
 //a booklist component
 function Booklist() {
   return (
   <section className="booklist">
-    <Book
+    {books.map((book) => {
+      console.log(book)
+      return <article>Hello</article>
+    })
+
+    /* {<Book
       //using object and property value
       img = {book.img}
       title = {book.title}
@@ -51,27 +70,36 @@ function Booklist() {
     >
       <p>Lorem, ...this is a child... ipsum dolor sit amet consectetur adipisicing elit. Quisquam, nihil pariatur! Culpa at facilis inventore. Expedita cupiditate libero odio laboriosam!</p>
     </Book>
+    
     <Book
       //using prop name assigned prop value as an object's property value)
-      img = {secondBook.img}
-      title = {secondBook.title}
-      author = {secondBook.author}
+      img = {books[0].img}
+      title = {books[0].title}
+      author = {books[0].author}
     />
+    <Book
+      //using object and property value
+      img = {book1.img}
+      title = {book1.title}
+      author = {book1.author}
+
+      //CHILDREN PROPS GO IN BETWEEN THE TAGS(AVOID SELF CLOSING TAGS)
+    ></Book> */}
   </section>
   );
 };
 
 //a book component
 const Book = (props) => {
+  console.log(props);
   //object destructuring(REMEMBER TO READ ABOUT THIS)
-  const { img, title, author, children} = props;
+  const { img, title, author} = props;
 
   return (
   <article className="book"> 
     <img src={img} alt=""/>
     <h2>{title}</h2>
     <h4>{author}</h4>
-    {children}
 
   </article>
   );
