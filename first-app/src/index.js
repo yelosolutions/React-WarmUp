@@ -1,8 +1,12 @@
 import React from 'react';
 //import ReactDOM from 'react-dom';
 
-// Before
-import { render } from 'react-dom';
+// Before NO LONGER SUPPORTED IN REACT 18
+//import ReactDOM from 'react-dom'      or
+//import { render } from 'react-dom';
+
+//After
+import { createRoot } from 'react-dom/client';
 
 
 import './index.css';
@@ -44,6 +48,23 @@ const books = [
 ];
 
 
+/*
+export default function Button() {
+  function handleClick() {
+    alert('You clicked me!');
+  }
+
+  return (
+    <button onClick={handleClick}>
+      Click me
+    </button>
+  );
+}
+*/
+
+
+
+
 /*a booklist component
  * set up a map method - allows mapping of book objects from the books array
   to the props. Avoid manually  adding Book component and img, title and author
@@ -53,8 +74,14 @@ function Booklist() {
   return (
   <section className="booklist">
     {books.map((book) => {
-      const {id, img, title, author} = book;
-      return <Book key={id} book={book}></Book>
+      //const {id, img, title, author} = book;
+      
+      /*spread out properties {...book} instead of passing book as an 
+      object 
+      (NOTE: use props instead of props.book in Book component)
+       *
+      */
+      return <Book key={book.id} {...book}></Book>
     })}
   </section>
   );
@@ -63,27 +90,41 @@ function Booklist() {
 //a book component
 const Book = (props) => {
   //object destructuring(REMEMBER TO READ ABOUT THIS)
-  const { img, title, author} = props.book;
+  const { img, title, author} = props;
+
+  const clickHandler = (e) => {
+    console.log(e); // React event object
+    console.log(e.target);
+    console.log('What!'); 
+  }
+
+  const complexExample = (author) => {
+    console.log(author);
+  }
 
   return (
-  <article className="book"> 
+  <article className="book" onMouseOver={() => console.log(author)}> 
     <img src={img} alt="" height="200" width="200"/>
-    <h2>{title}</h2>
+    <h2 onClick={() => console.log(title)}>{title}</h2>
     <h4>{author}</h4>
-
+    <button type="button" className="button" onClick={clickHandler} >
+      Reference Example
+    </button>
+    <button type="button" onClick={() => complexExample(author)} >
+      More Complex Example
+    </button>
   </article>
   );
 }
 
-const root = document.getElementById("root");
-render(<Booklist/>, root);
+const container = document.getElementById("root")
+const root = createRoot(container);
+root.render(<Booklist/>);
 
 
-//const root = createRoot(container); // createRoot(container!) if you use TypeScript
-//root.render(<App tab="home" />);
-
-//const root = document.getElementById("root");
+//NO LONGER SUPPORTED IN REACT 18
 //ReactDOM.render(<Booklist/>, root);
+//render(<Booklist/>, root)
 
 
 /*setup variables
